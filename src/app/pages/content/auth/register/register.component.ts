@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     private _ToastrService:ToastrService,
     private _Renderer2:Renderer2
   ) {
-    if (sessionStorage.getItem('currentUserToken') !== null) {
+    if (localStorage.getItem('currentUserToken') !== null) {
       this._Router.navigate(['/'])
     }
   }

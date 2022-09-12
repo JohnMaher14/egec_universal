@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, TransferState } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule, TransferState } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +52,7 @@ import { InnerPageLoaderComponent } from './pages/shared/inner-page-loader/inner
 import { BlogDetailsComponent } from './pages/content/blog-details/blog-details.component';
 import { translateBrowserLoaderFactory } from './shared_function/translate-browser.loader';
 import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 registerLocaleData(ar)
 registerLocaleData(en)
 
@@ -90,17 +91,23 @@ registerLocaleData(en)
     AppRoutingModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
+    BrowserTransferStateModule,
     AngularMaterialModule,
     FormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'ar',
+      // loader: {
+      //   provide: {
+      //     TranslateLoader,
+      //     TransferState
+      //   },
+      //   useFactory: translateBrowserLoaderFactory,
+      //   deps: [HttpClient, TransferState]
+      // }
       loader: {
-        provide: {
-          TranslateLoader,
-          TransferState}
-          ,
+        provide: TranslateLoader,
         useFactory: translateBrowserLoaderFactory,
-        deps: [HttpClient, TransferState]
+        deps: [HttpClient]
       }
     }),
     BrowserAnimationsModule,

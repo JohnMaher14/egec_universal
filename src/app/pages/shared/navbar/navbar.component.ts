@@ -21,12 +21,15 @@ export class NavbarComponent implements OnInit {
   userArray: any;
   userPersonalInfo: any;
   paperStatus!: any;
+  locales = ['en', 'ar'];
+
     constructor(
     private _Renderer2:Renderer2,
     public _TranslateService:TranslateService,
     private _AuthenticationService:AuthenticationService,
     private _UserService:UserService ,
-    private _HomeService:HomeService
+    private _HomeService:HomeService,
+
   ) { }
 
   closeSidebar(){
@@ -40,7 +43,10 @@ export class NavbarComponent implements OnInit {
     this.toggleSidebar = true;
 
   }
-
+  changeLanguage(locale: string): void {
+    this._TranslateService.use(locale);
+    console.log(locale);
+  }
   // showPaperInfo(){
   //   this._AuthenticationService.getPaperInfo(this.userArray.id).subscribe(
   //     (response) => {
@@ -133,7 +139,9 @@ export class NavbarComponent implements OnInit {
   }
   showcurrentLanguage(language:any){
     this._TranslateService.use(language);
+    console.log(language)
     localStorage.setItem("currentLanguage",language)
+
   }
   authentication(){
     this._AuthenticationService.currentUserData.subscribe(() => {
@@ -172,7 +180,8 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-    logout(){
-      this._AuthenticationService.signOut();
-    }
+  logout(){
+    this._AuthenticationService.signOut();
+  }
+
 }

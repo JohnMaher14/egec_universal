@@ -53,8 +53,8 @@
                     </a>
                     <ng-template ngbNavContent>
                       <div class="course__description" *ngFor="let facultyData of facultyDatas">
-                        <div [innerHtml]="currentLanguage === 'ar' ? facultyData?.ar_title : facultyData?.en_title" class="card__header"></div>
-                        <div [innerHtml]="currentLanguage === 'ar' ?facultyData?.ar_text : facultyData?.en_text"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ? facultyData?.ar_title : facultyData?.en_title | sanitizeHtml " class="card__header"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ?facultyData?.ar_text : facultyData?.en_text | sanitizeHtml "></div>
                       </div>
                     </ng-template>
                   </li>
@@ -187,10 +187,10 @@
                                 <!-- {{condition.major_id === major.id}} -->
                               <ng-container *ngIf="condition.major_id === major.id">
                                 <ng-container *ngIf="condition?.ar_title_condition != null || condition?.en_title_condition != null">
-                                  <div [innerHtml]="currentLanguage === 'ar' ? condition?.ar_title_condition : condition?.en_title_condition" class="card__header"></div>
+                                  <div [innerHtml]="currentLanguage === 'ar' ? condition?.ar_title_condition : condition?.en_title_condition | sanitizeHtml" class="card__header"></div>
                                 </ng-container>
                                 <ng-container *ngIf="condition?.ar_text_condition != null || condition?.en_text_condition != null">
-                                  <div [innerHtml]="currentLanguage === 'ar' ?condition?.ar_text_condition : condition?.en_text_condition"></div>
+                                  <div [innerHtml]="currentLanguage === 'ar' ?condition?.ar_text_condition : condition?.en_text_condition | sanitizeHtml"></div>
                                 </ng-container>
                               </ng-container>
                               </div>
@@ -237,7 +237,7 @@
                             </div>
                             <div class="course__video-info">
                               <h5><span>{{currentLanguage === 'ar' ? 'العنوان' : 'Address'}} :</span>
-                                <div [innerHtml]="currentLanguage === 'ar' ? facultyUniversity?.ar_address : facultyUniversity?.en_address"></div>
+                                <div [innerHtml]="currentLanguage === 'ar' ? facultyUniversity?.ar_address : facultyUniversity?.en_address | sanitizeHtml"></div>
                               </h5>
                             </div>
                         </li>
@@ -277,15 +277,15 @@
                     <li *ngFor="let otherFaculty of otherFacultiesSpecial | slice:0:3">
                         <ng-container *ngFor="let facultyUniversitySpecial of facultyUniversities">
                           <a *ngIf="otherFaculty.id === facultyUniversitySpecial.faculty_id" [routerLink]="['/faculty', otherFaculty.id , facultyUniversitySpecial.university_id ]">
-  
+
                             <div class="course__sm d-flex align-items-center mb-30">
                               <div class="course__sm-thumb" [ngClass]="currentLanguage == 'ar' ? 'ml-20' : 'mr-20'">
                                   <img [src]="facultyImage+facultyUniversitySpecial.logo" alt="">
                               </div>
                               <div class="course__sm-content">
-  
+
                                 <h5>{{currentLanguage === 'ar' ?  otherFaculty.ar_name : otherFaculty.en_name}}</h5>
-  
+
                               </div>
                             </div>
                           </a>

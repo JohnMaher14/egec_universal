@@ -527,8 +527,7 @@
   style="background-image: url(' assets/theme/img/main_images/testominals_cover.png');">
   <div class="container">
     <div class="col-xxl-12">
-      <ng-container *ngIf="currentLanguage === 'en' ">
-        <owl-carousel-o [options]="testimonials" class="testimonial-box" dir="ltr">
+        <owl-carousel-o [options]="testimonialsAr" class="testimonial-box" dir="ltr">
           <ng-container *ngFor="let review of userReviews">
             <ng-template carouselSlide>
 
@@ -564,29 +563,8 @@
           </ng-container>
 
         </owl-carousel-o>
-      </ng-container>
 
-      <ng-container *ngIf="currentLanguage === 'ar' ">
-        <owl-carousel-o [options]="testimonialsAr" class="testimonial-box" dir="rtl">
-          <ng-container *ngFor="let review of userReviews">
-            <ng-template carouselSlide>
 
-              <div class="testimonial__area--item">
-                <div class="testimonial__area--img">
-                  <img [src]="reviewImage+review.user_image" alt="Jhon Smith">
-                </div>
-                <div class="testimonial__area--desc">
-                  <h4 class="testimonial__area--name">{{ review.name }}</h4>
-                  <p class="testimonial__area--p" [innerHtml]="review.message | sanitizeHtml">
-                  </p>
-                </div>
-              </div>
-            </ng-template>
-
-          </ng-container>
-        </owl-carousel-o>
-
-      </ng-container>
 
     </div>
   </div>

@@ -84,16 +84,23 @@
                       {{"navbar_contact_text" | translate}}
 
                     </a></li>
-                  <li *ngIf="currentLanguage === 'ar'">
+                  <li>
                     <a (click)="showcurrentLanguage('en')">
                       <img src="assets/theme/img/flags/usa.png" class="header__area--language" alt="header language">
                     </a>
                   </li>
-                  <li *ngIf="currentLanguage === 'en'">
+                  <li >
                     <a (click)="showcurrentLanguage('ar')">
                       <img src="assets/theme/img/flags/egypt.png" class="header__area--language" alt="header language">
                     </a>
                   </li>
+                  <ul class="submenu">
+                    <li *ngFor="let locale of locales">
+                      <a (click)="changeLanguage(locale)">
+                      {{locale}}</a>
+                    </li>
+
+                  </ul>
                 </ul>
               </nav>
             </div>
@@ -124,7 +131,7 @@
                               routerLink="/movement-information">{{currentLanguage === 'ar' ? 'حركة الملفات' : 'Movement Information'}}</a>
                           </li>
                         </ng-container>
-                        
+
                         <li><a (click)="logout()">{{currentLanguage === 'ar' ?  'خروج' : 'Logout'}}</a></li>
                       </ul>
                     </li>
@@ -231,18 +238,18 @@
                   <a routerLink="/destinations">
                     {{"navbar_destination_text" | translate}}
 
-                  </a>                
+                  </a>
                 </li>
                 <li (click)="closeNavbar()"><a routerLink="contact-us">
                   {{"navbar_contact_text" | translate}}
 
-                </a></li> 
+                </a></li>
                 <li (click)="closeNavbar()">
                   <a routerLink="/login">
                     {{"navbar-button" | translate}}
                   </a>
 
-                </li>  
+                </li>
                 <li (click)="closeNavbar()" *ngIf="currentLanguage === 'ar'">
                   <a (click)="showcurrentLanguage('en')">
                     English
@@ -250,9 +257,9 @@
                 </li>
                 <li (click)="closeNavbar()" *ngIf="currentLanguage === 'en'">
                   <a (click)="showcurrentLanguage('ar')">
-                    
+                    عربي
                   </a>
-                </li>           
+                </li>
               </ul>
             </nav>
           </div>

@@ -67,8 +67,8 @@
                     </a>
                     <ng-template ngbNavContent>
                       <div class="course__description">
-                        <div [innerHtml]="currentLanguage === 'ar' ? university?.ar_why_title : university?.en_why_title" class="card__header"></div>
-                        <div [innerHtml]="currentLanguage === 'ar' ?university?.ar_why_text : university?.en_why_text"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ? university?.ar_why_title : university?.en_why_title | sanitizeHtml " class="card__header"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ?university?.ar_why_text : university?.en_why_text | sanitizeHtml "></div>
                       </div>
                     </ng-template>
                   </li>
@@ -129,16 +129,16 @@
                     </a>
                     <ng-template ngbNavContent>
                       <div class="course__description">
-                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_population_title : destinationDetail?.en_population_title" class="card__header"></div>
-                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_population_text : destinationDetail?.en_population_text"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_population_title : destinationDetail?.en_population_title | sanitizeHtml " class="card__header"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_population_text : destinationDetail?.en_population_text | sanitizeHtml "></div>
                       </div>
                       <div class="course__description">
-                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_why_egypt_title : destinationDetail?.en_why_egypt_title" class="card__header"></div>
-                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_why_egypt_text : destinationDetail?.en_why_egypt_text"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_why_egypt_title : destinationDetail?.en_why_egypt_title | sanitizeHtml " class="card__header"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_why_egypt_text : destinationDetail?.en_why_egypt_text | sanitizeHtml "></div>
                       </div>
                       <div class="course__description">
-                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_study_condition_title : destinationDetail?.en_study_condition_title" class="card__header"></div>
-                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_study_condition_text : destinationDetail?.en_study_condition_text"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ? destinationDetail?.ar_study_condition_title : destinationDetail?.en_study_condition_title | sanitizeHtml " class="card__header"></div>
+                        <div [innerHtml]="currentLanguage === 'ar' ?destinationDetail?.ar_study_condition_text : destinationDetail?.en_study_condition_text | sanitizeHtml "></div>
                       </div>
 
                     </ng-template>

@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   currentLanguage:any
   show:boolean=true;
   currentLang:any;
+  locales = ['en', 'ar'];
+
   constructor(
     public _TranslateService:TranslateService,
     private _render:Renderer2,
@@ -27,10 +29,9 @@ export class AppComponent implements OnInit {
     this.currentLanguage =  localStorage.getItem('currentLanguage') || 'ar';
     this._TranslateService.use(this.currentLanguage);
 
-    if(localStorage.getItem('currentLanguage') === ''){
+    if(localStorage.getItem('currentLanguage') == null){
       localStorage.setItem('currentLanguage' , 'ar')
       this._render.addClass(document.body, 'rtl')
-      console.log("test");
     }
     else if(this.currentLanguage === 'ar'){
       localStorage.setItem('currentLanguage' , 'ar')
@@ -51,9 +52,9 @@ export class AppComponent implements OnInit {
         this.currentLanguage = this._TranslateService.currentLang
       }
     )
-      if(platformBrowser(this.platformId)){
-        this._NgwWowService.init();
-      }
+      // if(platformBrowser(this.platformId)){
+      //   this._NgwWowService.init();
+      // }
 
   }
   showCurrentLanguage(language: any){
